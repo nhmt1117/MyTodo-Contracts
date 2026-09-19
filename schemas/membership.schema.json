@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mytodo.local/schemas/membership-v1.json",
+  "title": "MyTodo Membership Summary",
+  "type": "object",
+  "required": ["plan", "status", "entitlements"],
+  "properties": {
+    "plan": { "type": "string" },
+    "status": { "enum": ["active", "expired", "cancelled", "trial"] },
+    "expiresAt": { "type": ["string", "null"], "format": "date-time" },
+    "entitlements": {
+      "type": "object",
+      "additionalProperties": { "type": ["boolean", "integer", "string"] }
+    }
+  },
+  "additionalProperties": false
+}

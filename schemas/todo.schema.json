@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mytodo.local/schemas/todo-v1.json",
+  "title": "MyTodo Todo",
+  "type": "object",
+  "required": ["id", "title", "description", "timezone", "priority", "revision", "createdAt", "updatedAt"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "title": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "description": { "type": "string", "maxLength": 500 },
+    "dueAt": { "type": ["string", "null"], "format": "date-time" },
+    "timezone": { "type": "string", "minLength": 1, "maxLength": 64, "default": "Asia/Shanghai" },
+    "priority": { "enum": ["low", "mid", "high"] },
+    "isRecurring": { "type": "boolean", "default": false },
+    "recurrenceRule": { "type": ["object", "null"] },
+    "completedAt": { "type": ["string", "null"], "format": "date-time" },
+    "archivedAt": { "type": ["string", "null"], "format": "date-time" },
+    "deletedAt": { "type": ["string", "null"], "format": "date-time" },
+    "reminderEnabled": { "type": "boolean", "default": false },
+    "reminderMode": { "enum": ["auto", "gentle", "standard", "strong", "custom"] },
+    "customReminderOffsets": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "integer", "minimum": 0, "maximum": 525600 }
+    },
+    "muteRemind": { "type": "boolean", "default": false },
+    "snoozedUntil": { "type": ["string", "null"], "format": "date-time" },
+    "revision": { "type": "integer", "minimum": 0 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mytodo.local/schemas/sync-mutation-v1.json",
+  "title": "MyTodo Sync Mutation",
+  "type": "object",
+  "required": ["mutationId", "entityType", "entityId", "operation"],
+  "properties": {
+    "mutationId": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "entityType": { "const": "todo" },
+    "entityId": { "type": "string", "format": "uuid" },
+    "operation": { "enum": ["upsert", "delete"] },
+    "baseRevision": { "type": ["integer", "null"], "minimum": 0 },
+    "payload": { "$ref": "todo-sync-payload.schema.json" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "operation": { "const": "upsert" } } },
+      "then": { "required": ["payload"] }
+    },
+    {
+      "if": { "properties": { "operation": { "const": "delete" } } },
+      "then": { "not": { "required": ["payload"] } }
+    }
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "timezoneDefault": "Asia/Shanghai",
+  "profiles": {
+    "gentle": [1440, 0],
+    "standard": [4320, 1440, 0],
+    "strong": [10080, 4320, 1440, 120, 0]
+  },
+  "autoMapping": {
+    "low": "gentle",
+    "mid": "standard",
+    "high": "strong"
+  },
+  "recurrenceLimits": {
+    "dailyAllowedOffsets": [120, 0],
+    "weeklyExcludedOffsets": [10080]
+  }
+}

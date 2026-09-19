@@ -1,0 +1,27 @@
+[
+  {
+    "name": "高优先级自动推荐",
+    "priority": "high",
+    "mode": "auto",
+    "expectedOffsets": [10080, 4320, 1440, 120, 0]
+  },
+  {
+    "name": "中优先级自动推荐",
+    "priority": "mid",
+    "mode": "auto",
+    "expectedOffsets": [4320, 1440, 0]
+  },
+  {
+    "name": "低优先级自动推荐",
+    "priority": "low",
+    "mode": "auto",
+    "expectedOffsets": [1440, 0]
+  },
+  {
+    "name": "自定义节点去重并降序",
+    "priority": "mid",
+    "mode": "custom",
+    "customOffsets": [0, 120, 120, 1440],
+    "expectedOffsets": [1440, 120, 0]
+  }
+]
