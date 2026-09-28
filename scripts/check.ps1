@@ -13,10 +13,18 @@ $required = @(
     'openapi\mytodo-api.json',
     'schemas\todo.schema.json',
     'schemas\todo-sync-payload.schema.json',
+    'schemas\recurrence-rule.schema.json',
     'schemas\sync.schema.json',
+    'schemas\sync-snapshot.schema.json',
+    'schemas\payment-order.schema.json',
     'config\reminder-profiles.json',
+    'config\free-limits.json',
     'fixtures\reminder-cases.json',
-    'fixtures\sync-cases.json'
+    'fixtures\account-avatar-cases.json',
+    'fixtures\sync-cases.json',
+    'fixtures\sync-recovery-cases.json',
+    'fixtures\todo-roundtrip.json'
+    'fixtures\payment-order-cases.json'
 )
 
 foreach ($relativePath in $required) {

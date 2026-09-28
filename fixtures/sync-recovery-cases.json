@@ -1,0 +1,6 @@
+[
+  { "name": "cloud-task-missing", "localRevision": 2, "pending": false, "inSnapshot": false, "expected": "delete-local" },
+  { "name": "local-new-task", "localRevision": 0, "pending": true, "inSnapshot": false, "expected": "keep-local" },
+  { "name": "offline-edit", "localRevision": 2, "pending": true, "inSnapshot": true, "expected": "keep-local" },
+  { "name": "cloud-task-present", "localRevision": 1, "pending": false, "inSnapshot": true, "expected": "apply-cloud" }
+]

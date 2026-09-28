@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mytodo.local/schemas/payment-order-v1.json",
+  "title": "MyTodo Payment Order",
+  "type": "object",
+  "required": ["id", "requestId", "versionId", "planId", "priceCents", "currency", "status", "testOnly", "grantId", "createdAt", "expiresAt", "settledAt"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "requestId": { "type": "string", "format": "uuid" },
+    "versionId": { "type": "string", "format": "uuid" },
+    "planId": { "type": "string", "format": "uuid" },
+    "priceCents": { "type": "integer", "minimum": 1 },
+    "currency": { "const": "CNY" },
+    "status": { "enum": ["PENDING", "PAID", "PAID_NEEDS_REVIEW", "CANCELLED", "EXPIRED"] },
+    "testOnly": { "type": "boolean" },
+    "grantId": { "type": ["string", "null"] },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "expiresAt": { "type": "string", "format": "date-time" },
+    "settledAt": { "type": ["string", "null"], "format": "date-time" }
+  },
+  "additionalProperties": false
+}

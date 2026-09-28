@@ -199,6 +199,69 @@
         ]
       }
     },
+    "/api/v1/auth/me/avatar": {
+      "get": {
+        "operationId": "AuthController_getAvatar",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Authentication"
+        ]
+      },
+      "put": {
+        "operationId": "AuthController_updateAvatar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadAvatarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Authentication"
+        ]
+      },
+      "delete": {
+        "operationId": "AuthController_deleteAvatar",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Authentication"
+        ]
+      }
+    },
     "/api/v1/auth/change-password": {
       "post": {
         "operationId": "AuthController_changePassword",
@@ -484,6 +547,145 @@
         ]
       }
     },
+    "/api/v1/membership/checkout-config": {
+      "get": {
+        "operationId": "MembershipController_checkoutConfig",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Membership"
+        ]
+      }
+    },
+    "/api/v1/membership/orders": {
+      "get": {
+        "operationId": "MembershipController_orders",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Membership"
+        ]
+      },
+      "post": {
+        "operationId": "MembershipController_createOrder",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Membership"
+        ]
+      }
+    },
+    "/api/v1/membership/orders/{id}": {
+      "get": {
+        "operationId": "MembershipController_order",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Membership"
+        ]
+      }
+    },
+    "/api/v1/membership/orders/{id}/cancel": {
+      "post": {
+        "operationId": "MembershipController_cancelOrder",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Membership"
+        ]
+      }
+    },
+    "/api/v1/membership/orders/{id}/sandbox-complete": {
+      "post": {
+        "operationId": "MembershipController_completeSandbox",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Membership"
+        ]
+      }
+    },
     "/api/v1/membership/plans": {
       "get": {
         "operationId": "MembershipController_plans",
@@ -643,6 +845,934 @@
         ],
         "tags": [
           "Synchronization"
+        ]
+      }
+    },
+    "/api/v1/sync/snapshot": {
+      "get": {
+        "operationId": "SyncController_snapshot",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Synchronization"
+        ]
+      }
+    },
+    "/api/v1/admin/login": {
+      "post": {
+        "operationId": "AdminAuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminLoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/me": {
+      "get": {
+        "operationId": "AdminController_me",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/overview": {
+      "get": {
+        "operationId": "AdminController_overview",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/users": {
+      "get": {
+        "operationId": "AdminController_users",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/users/{userId}": {
+      "get": {
+        "operationId": "AdminController_user",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/audit": {
+      "get": {
+        "operationId": "AdminController_audit",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/users/{userId}/devices/{deviceId}": {
+      "delete": {
+        "operationId": "AdminController_revokeDevice",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deviceId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/plans/{id}/publish": {
+      "post": {
+        "operationId": "OperationsController_publish",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishPlanDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/plans/{id}/listing": {
+      "post": {
+        "operationId": "OperationsController_listing",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListingPlanDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/users/{id}/membership-grants": {
+      "post": {
+        "operationId": "OperationsController_grant",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GrantMembershipDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/metrics": {
+      "get": {
+        "operationId": "OperationsController_metrics",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/plans": {
+      "get": {
+        "operationId": "OperationsController_plans",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      },
+      "post": {
+        "operationId": "OperationsController_createPlan",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlanDraftDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/plans/{id}": {
+      "patch": {
+        "operationId": "OperationsController_updatePlan",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePlanDraftDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/users/{id}/password-reset": {
+      "post": {
+        "operationId": "OperationsController_reset",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordResetRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/feedback": {
+      "get": {
+        "operationId": "OperationsController_feedback",
+        "parameters": [
+          {
+            "name": "priority",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "LOW",
+                "NORMAL",
+                "HIGH"
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "OPEN",
+              "type": "string",
+              "enum": [
+                "OPEN",
+                "IN_PROGRESS",
+                "RESOLVED",
+                "ALL"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100000,
+              "default": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/feedback/{id}": {
+      "patch": {
+        "operationId": "OperationsController_updateFeedback",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFeedbackDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/feedback": {
+      "post": {
+        "operationId": "FeedbackController_submit",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitFeedbackDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Feedback"
+        ]
+      }
+    },
+    "/api/v1/admin/users/{id}/control": {
+      "post": {
+        "operationId": "ManagementController_control",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountControlDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/audit/search": {
+      "get": {
+        "operationId": "ManagementController_audit",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100000,
+              "default": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "action",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "DEVICE_REVOKED",
+                "ALL_DEVICES_REVOKED",
+                "USER_SUSPENDED",
+                "USER_RESUMED",
+                "PLAN_CREATED",
+                "PLAN_UPDATED",
+                "PLAN_PUBLISHED",
+                "PLAN_LISTING_CHANGED",
+                "MEMBERSHIP_GRANTED",
+                "PASSWORD_RESET_REQUESTED",
+                "PASSWORD_RESET_FAILED",
+                "FEEDBACK_UPDATED",
+                "BILLING_RECORDED",
+                "BILLING_VOIDED"
+              ]
+            }
+          },
+          {
+            "name": "actorUserId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "name": "subjectUserId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": "2026-09-27",
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": "2026-09-27",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/feedback/{id}/history": {
+      "get": {
+        "operationId": "ManagementController_history",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100000,
+              "default": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/billing-records": {
+      "get": {
+        "operationId": "BillingController_list",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100000,
+              "default": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "userId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "name": "kind",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "RECHARGE",
+                "PURCHASE"
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "RECORDED",
+                "VOIDED"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      },
+      "post": {
+        "operationId": "BillingController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BillingInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/billing-records/{id}/void": {
+      "post": {
+        "operationId": "BillingController_void",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VoidBillingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/users/{id}/membership-records": {
+      "get": {
+        "operationId": "BillingController_membership",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100000,
+              "default": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
+        ]
+      }
+    },
+    "/api/v1/admin/payment-orders": {
+      "get": {
+        "operationId": "PaymentOrdersController_list",
+        "parameters": [
+          {
+            "name": "status",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Administration"
         ]
       }
     }
@@ -811,6 +1941,18 @@
           }
         }
       },
+      "UploadAvatarDto": {
+        "type": "object",
+        "properties": {
+          "imageBase64": {
+            "type": "string",
+            "description": "Base64 encoded JPEG, PNG or WebP image"
+          }
+        },
+        "required": [
+          "imageBase64"
+        ]
+      },
       "ChangePasswordDto": {
         "type": "object",
         "properties": {
@@ -971,6 +2113,426 @@
       "PushSyncDto": {
         "type": "object",
         "properties": {}
+      },
+      "AdminLoginDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "PublishPlanDto": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "number"
+          },
+          "listed": {
+            "type": "boolean"
+          },
+          "acknowledgeMembers": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "revision",
+          "listed"
+        ]
+      },
+      "ListingPlanDto": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "number"
+          },
+          "listed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "revision",
+          "listed"
+        ]
+      },
+      "GrantMembershipDto": {
+        "type": "object",
+        "properties": {
+          "versionId": {
+            "type": "string"
+          },
+          "requestId": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "versionId",
+          "requestId",
+          "reason"
+        ]
+      },
+      "PlanDraftDto": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "FREE",
+              "MEMBER"
+            ]
+          },
+          "windowsDeviceLimit": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "macosDeviceLimit": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "webDeviceLimit": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "androidDeviceLimit": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "iosDeviceLimit": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "cloudSyncEnabled": {
+            "type": "boolean"
+          },
+          "cloudPushEnabled": {
+            "type": "boolean"
+          },
+          "historyRetentionDays": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 3650
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "description": {
+            "type": "object",
+            "maxLength": 500,
+            "default": ""
+          },
+          "priceCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000000
+          },
+          "durationDays": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3650
+          },
+          "activeTodoLimit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "completedTodoLimit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "ARCHIVED"
+            ],
+            "default": "DRAFT"
+          }
+        },
+        "required": [
+          "name",
+          "priceCents",
+          "durationDays",
+          "activeTodoLimit",
+          "completedTodoLimit"
+        ]
+      },
+      "UpdatePlanDraftDto": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "FREE",
+              "MEMBER"
+            ]
+          },
+          "windowsDeviceLimit": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "macosDeviceLimit": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "webDeviceLimit": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "androidDeviceLimit": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "iosDeviceLimit": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "cloudSyncEnabled": {
+            "type": "boolean"
+          },
+          "cloudPushEnabled": {
+            "type": "boolean"
+          },
+          "historyRetentionDays": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 3650
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "description": {
+            "type": "object",
+            "maxLength": 500,
+            "default": ""
+          },
+          "priceCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000000
+          },
+          "durationDays": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3650
+          },
+          "activeTodoLimit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "completedTodoLimit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "ARCHIVED"
+            ],
+            "default": "DRAFT"
+          },
+          "acknowledgeMembers": {
+            "type": "object"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "name",
+          "priceCents",
+          "durationDays",
+          "activeTodoLimit",
+          "completedTodoLimit",
+          "revision"
+        ]
+      },
+      "PasswordResetRequestDto": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 300
+          }
+        },
+        "required": [
+          "reason"
+        ]
+      },
+      "UpdateFeedbackDto": {
+        "type": "object",
+        "properties": {
+          "priority": {
+            "type": "string",
+            "enum": [
+              "LOW",
+              "NORMAL",
+              "HIGH"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "IN_PROGRESS",
+              "RESOLVED"
+            ]
+          },
+          "adminNote": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "status",
+          "adminNote",
+          "revision"
+        ]
+      },
+      "SubmitFeedbackDto": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "BUG",
+              "SUGGESTION",
+              "OTHER"
+            ]
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "appVersion": {
+            "type": "object",
+            "maxLength": 40,
+            "default": ""
+          }
+        },
+        "required": [
+          "category",
+          "content"
+        ]
+      },
+      "AccountControlDto": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "SUSPEND",
+              "RESUME",
+              "REVOKE_ALL"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 300
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "action",
+          "reason",
+          "revision"
+        ]
+      },
+      "BillingInputDto": {
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "RECHARGE",
+              "PURCHASE"
+            ]
+          },
+          "amountCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000000
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 300
+          },
+          "planId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "planRevision": {
+            "type": "number",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "requestId",
+          "userId",
+          "kind",
+          "amountCents",
+          "reference",
+          "reason"
+        ]
+      },
+      "VoidBillingDto": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "number",
+            "minimum": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 300
+          }
+        },
+        "required": [
+          "revision",
+          "reason"
+        ]
       }
     }
   }

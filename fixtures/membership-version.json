@@ -1,0 +1,13 @@
+{
+  "userId": "00000000-0000-4000-8000-000000000010",
+  "plan": { "code": "free", "name": "普通用户", "versionId": null },
+  "status": "ACTIVE",
+  "startsAt": null,
+  "expiresAt": null,
+  "confirmedAt": "2026-09-27T00:00:00.000Z",
+  "offlineGraceEndsAt": null,
+  "limits": { "activeTodos": 100, "completedTodos": 500, "devicesPerPlatform": 1 },
+  "baseLimits": { "activeTodos": 100, "completedTodos": 500, "devicesPerPlatform": 1 },
+  "limitsByPlatform": { "WINDOWS": 1, "MACOS": 1, "WEB": 1, "ANDROID": 1, "IOS": 1 },
+  "entitlements": [{ "code": "local_tasks", "enabled": true }, { "code": "local_reminders", "enabled": true }, { "code": "offline_mode", "enabled": true }, { "code": "cloud_sync", "enabled": true }]
+}

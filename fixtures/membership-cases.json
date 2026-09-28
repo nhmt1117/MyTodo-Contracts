@@ -1,0 +1,7 @@
+[
+  { "name": "paid-version-is-immutable", "operation": "publish-new-version", "expected": "existing-member-retains-acquired-version" },
+  { "name": "draft-does-not-change-rights", "operation": "save-draft", "expected": "no-entitlement-change" },
+  { "name": "grant-retry", "operation": "repeat-identical-request-id", "expected": "same-grant-no-extra-days" },
+  { "name": "expired-member", "operation": "resolve-membership", "expected": "published-free-limits-no-bulk-deletion" },
+  { "name": "sync-disabled", "operation": "sync-push", "expectedStatus": 403, "errorCode": "SYNC_ENTITLEMENT_REQUIRED", "localData": "preserved" }
+]

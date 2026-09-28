@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mytodo.local/schemas/recurrence-rule-v1.json",
+  "title": "MyTodo Recurrence Rule",
+  "type": "object",
+  "required": ["type", "startDate"],
+  "properties": {
+    "type": { "enum": ["daily", "weekly", "monthly"] },
+    "startDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-([0-2][0-9]|3[01])$"
+    }
+  },
+  "additionalProperties": false
+}

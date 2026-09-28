@@ -10,6 +10,7 @@
     "emailVerified": { "type": "boolean" },
     "nickname": { "type": "string", "maxLength": 40 },
     "avatarUrl": { "type": ["string", "null"], "format": "uri" },
+    "avatarUpdatedAt": { "type": ["string", "null"], "format": "date-time", "description": "头像内容版本；为空表示未设置头像。客户端用它判断是否刷新本地缓存。" },
     "phone": { "type": ["string", "null"], "description": "预留字段，当前版本不提供手机号认证。" }
   },
   "additionalProperties": false

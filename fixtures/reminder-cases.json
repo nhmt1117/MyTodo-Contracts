@@ -23,5 +23,12 @@
     "mode": "custom",
     "customOffsets": [0, 120, 120, 1440],
     "expectedOffsets": [1440, 120, 0]
+  },
+  {
+    "name": "自定义节点仅保留一年内的非负整数",
+    "priority": "mid",
+    "mode": "custom",
+    "customOffsets": [525600, 43201, 30.5, -1, 525601, 0],
+    "expectedOffsets": [525600, 43201, 0]
   }
 ]

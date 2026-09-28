@@ -1,0 +1,19 @@
+[
+  {
+    "name": "未设置头像",
+    "avatarUpdatedAt": null,
+    "expected": "show_initial"
+  },
+  {
+    "name": "头像版本变化",
+    "cachedAvatarUpdatedAt": "2026-01-01T00:00:00.000Z",
+    "avatarUpdatedAt": "2026-01-02T00:00:00.000Z",
+    "expected": "download_avatar"
+  },
+  {
+    "name": "头像版本未变化",
+    "cachedAvatarUpdatedAt": "2026-01-02T00:00:00.000Z",
+    "avatarUpdatedAt": "2026-01-02T00:00:00.000Z",
+    "expected": "keep_cache"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "free": {
+    "activeTodos": 100,
+    "completedTodos": 500,
+    "devicesPerPlatform": 1
+  }
+}

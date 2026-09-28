@@ -1,0 +1,12 @@
+{
+  "currency": "CNY",
+  "amountUnit": "integer_cent",
+  "cases": [
+    { "kind": "RECHARGE", "amountCents": 1000, "effect": "record_only_no_wallet" },
+    { "kind": "PURCHASE", "amountCents": 1200, "effect": "pending_activation_snapshot" },
+    { "action": "retry_same_request", "effect": "same_record" },
+    { "action": "retry_changed_payload", "effect": "conflict" },
+    { "action": "void", "effect": "preserve_record_no_refund" },
+    { "planKind": "FREE", "priceCents": 0, "durationDays": 0, "unique": true }
+  ]
+}

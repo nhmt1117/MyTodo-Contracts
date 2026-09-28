@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mytodo.local/schemas/sync-snapshot-v1.json",
+  "title": "MyTodo Sync Snapshot",
+  "type": "object",
+  "required": ["cursor", "todos"],
+  "properties": {
+    "cursor": { "type": "string", "pattern": "^[0-9]+$" },
+    "todos": {
+      "type": "array",
+      "items": { "$ref": "todo.schema.json" }
+    }
+  },
+  "additionalProperties": false
+}

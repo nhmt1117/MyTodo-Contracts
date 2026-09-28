@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "cases": [
+    { "name": "default-disabled", "mode": "disabled", "checkoutAvailable": false },
+    { "name": "sandbox-test-account", "mode": "sandbox", "email": "test@example.com", "checkoutAvailable": true },
+    { "name": "sandbox-real-account", "mode": "sandbox", "email": "person@domain.invalid", "checkoutAvailable": false },
+    { "name": "pending-expired", "initialStatus": "PENDING", "afterExpiration": "EXPIRED", "grantCreated": false },
+    { "name": "duplicate-settlement", "initialStatus": "PAID", "afterRepeat": "PAID", "grantCount": 1 }
+  ]
+}

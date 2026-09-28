@@ -5,13 +5,29 @@
   "type": "object",
   "required": ["plan", "status", "entitlements"],
   "properties": {
-    "plan": { "type": "string" },
-    "status": { "enum": ["active", "expired", "cancelled", "trial"] },
+    "userId": { "type": "string" },
+    "plan": { "oneOf": [{ "type": "string" }, { "type": "object", "required": ["code", "name"], "properties": { "code": { "type": "string" }, "name": { "type": "string" }, "versionId": { "type": ["string", "null"] } }, "additionalProperties": false }] },
+    "status": { "enum": ["active", "expired", "cancelled", "trial", "ACTIVE", "EXPIRED", "CANCELLED", "TRIAL"] },
+    "startsAt": { "type": ["string", "null"], "format": "date-time" },
+    "confirmedAt": { "type": "string", "format": "date-time" },
+    "offlineGraceEndsAt": { "type": ["string", "null"], "format": "date-time" },
+    "baseLimits": { "$ref": "#/properties/limits" },
+    "limitsByPlatform": { "type": "object", "properties": { "WINDOWS": { "type": "integer", "minimum": 1 }, "MACOS": { "type": "integer", "minimum": 1 }, "WEB": { "type": "integer", "minimum": 1 }, "ANDROID": { "type": "integer", "minimum": 1 }, "IOS": { "type": "integer", "minimum": 1 } }, "additionalProperties": false },
     "expiresAt": { "type": ["string", "null"], "format": "date-time" },
-    "entitlements": {
+    "limits": {
       "type": "object",
-      "additionalProperties": { "type": ["boolean", "integer", "string"] }
-    }
+      "required": ["activeTodos", "completedTodos", "devicesPerPlatform"],
+      "properties": {
+        "activeTodos": { "type": "integer", "minimum": 1 },
+        "completedTodos": { "type": "integer", "minimum": 1 },
+        "devicesPerPlatform": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "entitlements": { "oneOf": [
+      { "type": "object", "additionalProperties": { "type": ["boolean", "integer", "string"] } },
+      { "type": "array", "items": { "type": "object", "required": ["code", "enabled"], "properties": { "code": { "type": "string" }, "enabled": { "type": "boolean" } }, "additionalProperties": false } }
+    ] }
   },
   "additionalProperties": false
 }
